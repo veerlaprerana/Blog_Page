@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="/styles/main.css">
+<h1 class="h1">The Blogger's Den!</h1>
+
+<section class="section">
+
+    <div class="blogs">
+        <h2>Your Blogs!</h2>
+        <% blogs.forEach((blog, index) => { %>
+            <div class="card">
+                <h3><%= blog.title %></h3>
+                <p><%= blog.content %></p>
+                <div class="blog-actions">
+                    <form action="/update/<%= index %>" method="GET">
+                        <button type="submit" class="btn update-btn">Update</button>
+                      </form>
+                      <form action="/delete/<%= index %>" method="POST">
+                        <button type="submit" class="btn delete-btn">Delete</button>
+                    </form>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+    <div class="posts">
+        <h3>Post your blog here!</h3>
+        <form action="/submit" method="POST">
+            <input type="text" name="title" placeholder="Title" required>
+            <input type="text" name="content" placeholder="Content" required>
+            <input type="submit" value="OK">
+        </form>
+    </div>
+
+</section>
